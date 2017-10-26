@@ -1,0 +1,34 @@
+﻿@using Entity02.Models
+@model IList<Hobby>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Создать", "Create")
+<table border="1">
+    <tr>
+        <td>Название</td>
+        <td>Сотрудники</td>
+        <td>Модифицировать</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.HobbyName)</td>
+        <td>
+            <ol>
+                @foreach (var worker in item.Workers)
+                {
+                    <li>
+                        @worker.Name 
+                        @worker.Surname<br />
+                    </li>
+                }
+            </ol>
+        </td>
+        <td>@Html.ActionLink("Изменить", "Edit", new { id = item.Id }) | @Html.ActionLink("Удалить", "Delete", new { id = item.Id })</td>
+    </tr>
+    }
+</table>

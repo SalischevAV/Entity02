@@ -1,0 +1,21 @@
+﻿@using Entity02.Models
+@model Entity02.Models.Hobby
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.HobbyName, "Название")<br />
+    @Html.EditorFor(m => m.HobbyName)<br />
+    <span>Участники</span><br />
+    foreach (var item in (List<Worker>)ViewBag.Workers)
+    {
+        <input type="checkbox" name="selectedWorkers" value="@item.Id" />@item.Name @item.Surname<br />
+    }
+    <input type="submit" value="Добавить" />
+
+}
+

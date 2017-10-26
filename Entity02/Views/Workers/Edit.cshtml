@@ -1,0 +1,37 @@
+﻿@model Entity02.Models.Worker
+@using Entity02.Models
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Редактирование</title>
+</head>
+<body>
+    <h2>Редактирование @Model.Surname </h2>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(m => m.Name, "Имя")<br />
+            @Html.EditorFor(m => m.Name)<br />
+            @Html.LabelFor(m => m.Surname, "Фамилия")<br />
+            @Html.EditorFor(m => m.Surname)<br />
+            @Html.LabelFor(m => m.Age, "Возраст")<br />
+            @Html.EditorFor(m => m.Age)<br />
+            @Html.LabelFor(m => m.CompanyId, "Компания")<br />
+            @Html.DropDownListFor(m => m.CompanyId, (SelectList)ViewBag.Companyes)<br />
+            <span>Хобби</span><br />
+            foreach (var item in (List<Hobby>)ViewBag.Hobbyes)
+            {
+                <input type="checkbox" name="selectedHobbyes" @(new HtmlString(Model.Hobbyes.Contains(item) ? "checked=\"checked\"" : "")) value="@item.Id" />@item.HobbyName<br />
+
+            }
+            <input type="submit" value="Редактировать" />
+        }
+    </div>
+</body>
+</html>

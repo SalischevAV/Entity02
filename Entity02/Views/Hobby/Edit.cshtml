@@ -1,0 +1,21 @@
+﻿@model Entity02.Models.Hobby
+@using Entity02.Models
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+@Html.LabelFor(m => m.HobbyName, "Название")<br />
+@Html.EditorFor(m => m.HobbyName)<br />
+@Html.LabelFor(m => m.Workers, "участники")<br />
+<span>Участники</span><br />
+    foreach (var item in (List<Worker>)ViewBag.Workers)
+    {
+        <input type="checkbox" name="selectedWorkers" @(new HtmlString(Model.Workers.Contains(item) ?"checked=\"checked\"" : "")) value="@item.Id"/>@item.Name  @item.Surname<br />
+    }
+    <input type="submit" value="Изменить" />
+}
+

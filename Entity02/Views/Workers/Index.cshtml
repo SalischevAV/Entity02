@@ -1,0 +1,55 @@
+﻿@using Entity02.Models
+@model IEnumerable<Worker>
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Создать", "Create")
+        <table border="1">
+            <tr>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Возраст</td>
+                <td>Компания</td>
+                <td>Локация</td>
+                <td>Хобби</td>
+                <td>Модифицировать</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Company.CompanyName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Company.CompanyLocation)</td>
+                    <td>
+                        <ol>
+                            @foreach (var hobby in item.Hobbyes)
+                            {
+                                <li>
+                                    @hobby.HobbyName<br />
+                                </li>
+                            }
+                        </ol>
+                    </td>
+                    <td>@Html.ActionLink("Изменить", "Edit", new { id = item.Id }) | @Html.ActionLink("Удалить", "Delete", new { id = item.Id })</td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</body>
+</html>

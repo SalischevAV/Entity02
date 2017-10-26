@@ -1,0 +1,15 @@
+﻿@model Entity02.Models.Company
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@Html.LabelFor(m => m.CompanyName, "Название")<br />
+@Html.DisplayFor(m => m.CompanyName)<br />
+@Html.LabelFor(m => m.CompanyLocation, "Расположение")<br />
+@Html.DisplayFor(m => m.CompanyLocation)<br />
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

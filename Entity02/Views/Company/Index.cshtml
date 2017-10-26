@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Company>
+@using Entity02.Models
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Создать", "Create")
+        <table border="1">
+            <tr>
+                <td>Название</td>
+                <td>Локация</td>
+                <td>Модифицировать</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CompanyLocation)</td>
+                    <td>@Html.ActionLink("Изменить", "Edit", new { id = item.Id }) | @Html.ActionLink("Удалить", "Delete", new { id = item.Id })</td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</body>
+</html>

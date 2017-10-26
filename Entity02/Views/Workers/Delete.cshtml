@@ -1,0 +1,31 @@
+﻿@model Entity02.Models.Worker
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h2>Удадение @Model.Surname</h2>
+    <div> 
+        @Html.LabelFor(m => m.Surname, "Фамилия")<br />
+        @Html.DisplayFor(m => m.Surname)<br />
+        @Html.LabelFor(m => m.Name, "Имя")<br />
+        @Html.DisplayFor(m => m.Name)<br />
+        @Html.LabelFor(m => m.Age, "Возраст")<br />
+        @Html.DisplayFor(m => m.Age)<br />
+        @Html.LabelFor(m => m.Company, "Компания")<br />
+        @Html.DisplayFor(m => m.Company.CompanyName)<br /> 
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Удалить" />
+        }
+    </div>
+</body>
+</html>

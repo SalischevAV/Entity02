@@ -1,0 +1,13 @@
+﻿@model Entity02.Models.Hobby
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@Html.LabelFor(m => m.HobbyName, "Название")<br />
+   @Html.DisplayFor(m => m.HobbyName) <br />
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}
